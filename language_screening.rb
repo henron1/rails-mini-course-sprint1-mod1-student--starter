@@ -40,9 +40,11 @@ jason = {
 candidates = [jane, sara, jason]
 
 def language_screening(people, language)
-    test1 = people.select {|candidate| candidate[:languages].include? language}
+    test1 = people.select {|candidate| candidate[:languages].map($:downcase).include? language.downcase}
     res = test1.map{|person| person[:first_name]}
     res
 end
 
 language_screening(candidates, "C++")
+language_screening(candidates, "Python")
+language_screening(candidates, "javascript")
